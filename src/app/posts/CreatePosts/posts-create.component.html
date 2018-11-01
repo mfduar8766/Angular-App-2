@@ -1,0 +1,8 @@
+<!-- Use 2 way binding to get and set the new post  -->
+<mat-card class="mat-card">
+  <mat-form-field>
+    <textarea class="textInput" matInput rows="6" [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+  <button color="accent" mat-raised-button (click)="onCreatePost()">Add Post</button>
+</mat-card>
+<p>{{newPost}}</p>

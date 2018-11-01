@@ -1,0 +1,13 @@
+.container {
+  margin-top: 1rem;
+  width: 80;
+  margin: auto;
+}
+
+.create-post {
+  margin-top: 1rem;
+}
+
+.post-list {
+  margin-top: 1rem;
+}

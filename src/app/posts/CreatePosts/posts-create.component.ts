@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Post } from '../../../Models/post.model';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PostService } from 'src/Services/post.service';
 
 @Component({
   selector: 'app-posts-create',
@@ -12,17 +13,15 @@ export class PostsCreateComponent implements OnInit {
   enteredTitle = '';
   /* @Output turns this into an event that can be listened to from outside. IE: Parent Component*/
   // Data emmited will be of type post
-  @Output() createdPost = new EventEmitter<Post>();
 
-  onCreatePost() {
-    const newPost: Post = {
-      title: this.enteredTitle,
-      content: this.enteredContent
-    };
-    this.createdPost.emit(newPost);
+  constructor(public postService: PostService) { }
+
+  onCreatePost(form: NgForm ) {
+    if(form.invalid) {
+      return;
+    }
+    this.postService.addPost(form.value.title, form.value.content);
   }
-
-  constructor() { }
 
   ngOnInit() {
   }
